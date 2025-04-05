@@ -49,5 +49,5 @@ Results Page
 How to run:
 1. Download all files
 2. Open in VScode
-3. Replace the blank API_KEY with your API key in game.js
+3. Replace the blank API_KEY with your API key (Gemini API key) in game.js
 4. Run on Live Server
