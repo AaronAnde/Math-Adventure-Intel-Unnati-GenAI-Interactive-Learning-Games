@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Math Adventure</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span class="label">Today's Accuracy:</span>
+                    <span class="value" id="accuracy">0%</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Coins:</span>
+                    <span class="value" id="coins">0</span>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="topic-selection">
+                <h2>Choose Your Math Topic</h2>
+                <div class="topics">
+                    <button class="topic-btn" id="addition">
+                        <span class="icon">+</span>
+                        <span>Addition</span>
+                    </button>
+                    <button class="topic-btn" id="subtraction">
+                        <span class="icon">−</span>
+                        <span>Subtraction</span>
+                    </button>
+                    <button class="topic-btn" id="multiplication">
+                        <span class="icon">×</span>
+                        <span>Multiplication</span>
+                    </button>
+                    <button class="topic-btn" id="division">
+                        <span class="icon">÷</span>
+                        <span>Division</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="powerups">
+                <h2>Power Ups</h2>
+                <div class="powerup-cards">
+                    <div class="powerup-card" id="fifty-fifty">
+                        <div class="powerup-icon">50/50</div>
+                        <div class="powerup-name">Eliminate 2</div>
+                        <div class="powerup-cost">50 coins</div>
+                    </div>
+                    <div class="powerup-card" id="freeze-time">
+                        <div class="powerup-icon">⏸️</div>
+                        <div class="powerup-name">Freeze Time</div>
+                        <div class="powerup-cost">75 coins</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

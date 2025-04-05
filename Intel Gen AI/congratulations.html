@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Adventure - Congratulations!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .congrats-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 6px solid #ffcc00;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
+        }
+        
+        .trophy {
+            font-size: 80px;
+            margin: 20px 0;
+            color: #ffcc00;
+            text-shadow: 5px 5px 0 #cc0000;
+        }
+        
+        .accuracy-display {
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #3366cc;
+            border: 3px solid #ffcc00;
+            box-shadow: 3px 3px 0 #000;
+        }
+        
+        .appreciation {
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 30px 0;
+            min-height: 80px;
+        }
+        
+        .coins-earned {
+            color: #ffcc00;
+            font-size: 28px;
+            margin: 20px 0;
+            text-shadow: 2px 2px 0 #000;
+        }
+        
+        .exit-btn {
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 30px;
+            border: 4px solid #ffcc00;
+            box-shadow: 5px 5px 0 #000;
+            font-family: 'Press Start 2P', cursive;
+            transition: all 0.3s;
+        }
+        
+        .exit-btn:hover {
+            background-color: #ff0000;
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0 #000;
+        }
+        
+        .exit-btn:active {
+            transform: translateY(0);
+            box-shadow: 3px 3px 0 #000;
+        }
+        
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="fireworks" id="fireworks"></div>
+    
+    <div class="congrats-container">
+        <h1>CONGRATULATIONS!</h1>
+        <div class="trophy">🏆</div>
+        
+        <div class="accuracy-display">
+            Your Accuracy: <span id="final-accuracy">80%</span>
+        </div>
+        
+        <div class="appreciation" id="appreciation-message">
+            Good job! You're getting better!
+        </div>
+        
+        <div class="coins-earned">
+            You earned: <span id="coins-reward">100</span> coins!
+        </div>
+        
+        <button class="exit-btn" id="exit-button">EXIT TO MENU</button>
+    </div>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const accuracy = urlParams.get('accuracy') || 80;
+        const coins = urlParams.get('coins') || 100;
+        
+        document.getElementById('final-accuracy').textContent = `${accuracy}%`;
+        document.getElementById('coins-reward').textContent = coins;
+        
+        const appreciationEl = document.getElementById('appreciation-message');
+        if (accuracy >= 90) {
+            appreciationEl.textContent = "AMAZING! You're a Math Superstar! 🌟";
+            appreciationEl.style.color = "#ffcc00";
+            appreciationEl.style.textShadow = "3px 3px 0 #cc0000";
+        } else if (accuracy >= 70) {
+            appreciationEl.textContent = "GREAT WORK! You're really good at this!";
+            appreciationEl.style.color = "#00ff00";
+            appreciationEl.style.textShadow = "3px 3px 0 #006600";
+        } else if (accuracy >= 50) {
+            appreciationEl.textContent = "GOOD JOB! Keep practicing to improve!";
+            appreciationEl.style.color = "#3366cc";
+            appreciationEl.style.textShadow = "3px 3px 0 #000066";
+        } else {
+            appreciationEl.textContent = "NICE TRY! Practice makes perfect!";
+            appreciationEl.style.color = "#cc0000";
+            appreciationEl.style.textShadow = "3px 3px 0 #660000";
+        }
+        
+        document.getElementById('exit-button').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        const fireworksContainer = document.getElementById('fireworks');
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.style.position = 'absolute';
+            firework.style.width = '5px';
+            firework.style.height = '5px';
+            firework.style.borderRadius = '50%';
+            firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.left = `${Math.random() * 100}%`;
+            firework.style.top = `${Math.random() * 100}%`;
+            firework.style.boxShadow = `0 0 10px 2px ${colors[Math.floor(Math.random() * colors.length)]}`;
+            
+            fireworksContainer.appendChild(firework);
+            
+            const animation = firework.animate([
+                { transform: 'scale(1)', opacity: 1 },
+                { transform: 'scale(3)', opacity: 0 }
+            ], {
+                duration: 1000 + Math.random() * 1000,
+                easing: 'cubic-bezier(0,0.2,0.8,1)'
+            });
+            
+            animation.onfinish = () => firework.remove();
+        }
+        
+        setInterval(createFirework, 200);
+    </script>
+</body>
+</html>

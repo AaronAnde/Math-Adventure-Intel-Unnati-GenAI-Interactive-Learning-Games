@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Adventure - Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="label">Level:</span>
+                    <span class="value" id="level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Time:</span>
+                    <span class="value" id="timer">30</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Coins:</span>
+                    <span class="value" id="game-coins">0</span>
+                </div>
+            </div>
+            
+            <div class="powerup-buttons">
+                <button class="powerup-btn" id="use-fifty-fifty" disabled>Use 50/50</button>
+                <button class="powerup-btn" id="use-freeze-time" disabled>Freeze Time</button>
+            </div>
+        </header>
+        
+        <main class="game-area">
+            <div class="question-container">
+                <div class="question" id="question-text">Loading question...</div>
+                <div class="options" id="options-container">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback">
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-text" id="progress-text">0/7</div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
